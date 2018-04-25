@@ -16,18 +16,19 @@
         function setup() {
           createCanvas(500,500);
           s = new Snake();
-          background(0,0,0);
+          background(66,134,244);
           foodLocation();
           
         }
         
         function draw() {
           frameRate(10);
-          background("rgba(255,0,0,0.5");
+          background("rgba(175,209,242,1)");
+          
           s.show(); //Shows the snake
           s.update(); // Update the snakes direction
           s.death();
-          fill(255,0,0); //This is for the food
+          fill(47,151,47); //This is for the food
           rect(food.x, food.y, scl, scl); //Food shape
           if (s.eat(food)) { // we run the eat function in the object constructor
             foodLocation(); //run this function wehn the eat function in the object constructor is true (object constructor is the snake)
