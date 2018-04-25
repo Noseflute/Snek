@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js'></script>
+    <script src="snake.js"></script>
+  </head>
+  <body>
+    <h1 id = "yourScore">0</h1>
+    <script>
+      var s;
+      var scl = 20;//scale
+      var food;
+      var fRate=10;
+      var w = 500;
+      var h = 500;
+      
+        function setup() {
+          createCanvas(500,500);
+          s = new Snake();
+          background(0,0,0);
+          foodLocation();
+          
+        }
+        
+        function draw() {
+          frameRate(10);
+          background("rgba(255,0,0,0.5");
+          s.show(); //Shows the snake
+          s.update(); // Update the snakes direction
+          s.death();
+          fill(255,0,0); //This is for the food
+          rect(food.x, food.y, scl, scl); //Food shape
+          if (s.eat(food)) { // we run the eat function in the object constructor
+            foodLocation(); //run this function wehn the eat function in the object constructor is true (object constructor is the snake)
+          }
+        }
+        function foodLocation() {
+          var cols = floor(width / scl);
+          var rows = floor(height / scl);
+          food = createVector(floor(random(cols)), floor(random(rows)));
+          food.mult(scl);
+        }
+        function keyPressed() {
+          if (keyCode === UP_ARROW) { //moves snake up
+            s.dir(0,-1);
+          }
+            else if (keyCode === DOWN_ARROW) { //moves snake down
+              s.dir(0,1);
+            }
+            else if (keyCode === LEFT_ARROW) { //moves snake left
+              s.dir(-1,0);
+            }
+            else if (keyCode === RIGHT_ARROW) { //moves snake right
+              s.dir(1,0);
+            }
+        }
+    </script>
+  </body>
+</html>
